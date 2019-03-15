@@ -1,0 +1,19 @@
+#title {
+  background-color: #F1F1F1;
+  padding: 10px;
+  font-size: 2em;
+}
+
+table, td {
+  border: solid #000000 1px;
+  width: 60%;
+  margin-top: 75px;
+}
+
+table {
+  margin: 30px;
+}
+
+td {
+  padding: 20px;
+}
