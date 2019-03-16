@@ -22,7 +22,7 @@ class Search extends React.Component {
     return (
       <div>
         <div id="searchBar">
-          <input type="text" placeholder="search..." value={this.state.value} onChange={this.onChange}></input>
+          <input type="text" placeholder="Search..." value={this.state.value} onChange={this.onChange}></input>
         </div>
         <div id="go" onClick={this.search}>Go!</div>
       </div>

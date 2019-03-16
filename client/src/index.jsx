@@ -1,26 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 import MovieList from './components/MovieList.jsx';
 import Search from './components/Search.jsx';
+import Add from './components/Add.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies:  [
-        {title: 'Mean Girls'},
-        {title: 'Hackers'},
-        {title: 'The Grey'},
-        {title: 'Sunshine'},
-        {title: 'Ex Machina'},
-      ],
+      movies:  [],
       displayed: []
     };
     this.search = this.search.bind(this);
+    this.add = this.add.bind(this);
+    this.display = this.display.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ displayed: this.state.movies });
+    $.ajax({
+      method: 'GET',
+      url: '/movies',
+      success: (data) => {
+        this.setState({
+          movies: data,
+          displayed: data
+         })
+      }
+    });
+  }
+
+  display() {
+    $.ajax({
+      method: 'GET',
+      url: '/movies',
+      success: (data) => {
+        this.setState({ displayed: data })
+      }
+    });
   }
 
   search(title) {
@@ -41,9 +58,24 @@ class App extends React.Component {
     }
   }
 
+  add(movieTitle) {
+    $.ajax({
+      method: 'POST',
+      url: '/movies',
+      data: {
+        title: movieTitle
+      },
+      success: (data) => {
+        console.log('Success:', data)
+        this.display();
+      }
+    });
+  }
+
   render() {
     return (<div>
     <h1 id="title">MovieList</h1>
+    <Add add={this.add} />
     <Search search={this.search} />
     <MovieList movies={this.state.displayed} />
     </div>)

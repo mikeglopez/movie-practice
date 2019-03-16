@@ -24,16 +24,29 @@ td {
 
 input {
   border: none;
-  height: 16px;
+  height: 15px;
+  width: auto;
+}
+
+input:focus {
+  outline: none;
+}
+
+#searchBar, #addInput {
+  border: solid #999999 1px;
+  display: inline-block;
+  padding: 5px;
+  margin: 15px 0 15px 30px;
+}
+
+#addInput {
+  border-radius: 5px;
+  width: 200px;
 }
 
 #searchBar {
-  border: solid #999999 1px;
   border-radius: 5px 0 0 5px;
   border-right: 0;
-  display: inline-block;
-  padding: 5px;
-  margin-left: 30px;
 }
 
 #go {
@@ -47,4 +60,14 @@ input {
 #go:hover {
   color: #999999;
   cursor: pointer;
+}
+
+#addBtn {
+  background-color: #83B966;
+  color: #FFFFFF;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 1em;
+  height: 30px;
+  margin: 5px;
 }
